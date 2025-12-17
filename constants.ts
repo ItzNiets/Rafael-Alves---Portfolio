@@ -1,5 +1,14 @@
 import { Project, SkillData } from './types';
 
+/* 
+  =============================================================================
+  CONTENT CONTROL CENTER
+  =============================================================================
+  Update the values below to change the text, images, and data on your website.
+  Images can be URLs from Unsplash or local paths.
+*/
+
+// --- 1. HERO SECTION (The first screen) ---
 export const HERO_TEXT = {
   EN: {
     title: "VISUAL",
@@ -15,12 +24,61 @@ export const HERO_TEXT = {
   }
 };
 
+// --- 2. CONTACT INFO (Footer) ---
 export const CONTACT_INFO = {
   email: "rafinha.alvescosta@gmail.com",
   phone: "+55 (41) 99527-3616",
   location: "Curitiba, PR, Brazil"
 };
 
+// --- 3. ABOUT SECTION ---
+export const ABOUT_TEXT = {
+  EN: {
+    heading: "THE OPERATOR",
+    name: "RAFAEL ALVES DA COSTA",
+    role: "DIGITAL GAMES STUDENT // VFX ARTIST",
+    bio: "I am a 19-year-old digital artisan based in Curitiba. My focus is on the convergence of raw footage and synthetic reality. I specialize in post-production, visual design, and 3D integration.",
+    stats: {
+        pcd: "PCD (Partial Hearing / Hearing Aid User)",
+        setup: "High-Performance Render Station"
+    }
+  },
+  PT: {
+    heading: "O OPERADOR",
+    name: "RAFAEL ALVES DA COSTA",
+    role: "ESTUDANTE DE JOGOS DIGITAIS // ARTISTA VFX",
+    bio: "Tenho 19 anos, sou um artesão digital baseado em Curitiba. Meu foco é na convergência entre filmagem bruta e realidade sintética. Especialista em pós-produção, design visual e integração 3D.",
+    stats: {
+        pcd: "PCD (Audição Parcial / Usuário de Aparelho)",
+        setup: "Estação de Render de Alta Performance"
+    }
+  }
+};
+
+// --- 4. SKILLS (Radar Chart) ---
+// Values should be between 0 and 100
+export const SKILL_CATEGORIES: SkillData[] = [
+  { name: 'Color Grading', level: 95, category: 'Visual' },
+  { name: 'Compositing', level: 90, category: 'Visual' },
+  { name: '3D Logic', level: 75, category: '3D' },
+  { name: 'Sound Design', level: 70, category: 'Audio' },
+  { name: 'Motion', level: 85, category: 'Animation' },
+  { name: 'Storytelling', level: 80, category: 'Creative' },
+];
+
+// --- 5. SOFTWARE (Progress Bars) ---
+// Values should be between 0 and 100
+export const SOFTWARE_STACK: SkillData[] = [
+  { name: 'DaVinci Resolve', level: 98, category: 'Software' },
+  { name: 'Adobe After Effects', level: 90, category: 'Software' },
+  { name: 'Photoshop', level: 95, category: 'Software' },
+  { name: 'Premiere Pro', level: 85, category: 'Software' },
+  { name: 'Blender', level: 75, category: 'Software' },
+  { name: 'Unreal Engine', level: 60, category: 'Software' },
+];
+
+// --- 6. PROJECTS (Showcase Section) ---
+// Available types: 'video', 'comparison' (slider), 'image'
 export const PROJECTS: Project[] = [
   {
     id: '01',
@@ -28,8 +86,10 @@ export const PROJECTS: Project[] = [
     category: 'Video Editing',
     year: '2024',
     type: 'video',
+    // mediaUrl: Thumbnail image
     mediaUrl: 'https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?q=80&w=2664&auto=format&fit=crop',
-    videoUrl: 'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_5MB.mp4', // Placeholder
+    // videoUrl: Direct link to .mp4 file
+    videoUrl: 'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_5MB.mp4',
     description: {
       EN: "High-octane music video editing with complex transitions.",
       PT: "Edição de videoclipe de alta energia com transições complexas."
@@ -45,8 +105,9 @@ export const PROJECTS: Project[] = [
     category: 'Photo Manipulation',
     year: '2023',
     type: 'comparison',
-    beforeImage: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2670&auto=format&fit=crop', // Raw cityscape
-    afterImage: 'https://images.unsplash.com/photo-1480796927426-f609979314bd?q=80&w=2670&auto=format&fit=crop', // Cyberpunk city
+    // beforeImage & afterImage: URLs for the slider comparison
+    beforeImage: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2670&auto=format&fit=crop',
+    afterImage: 'https://images.unsplash.com/photo-1480796927426-f609979314bd?q=80&w=2670&auto=format&fit=crop',
     description: {
       EN: "Transformation of urban photography into digital dystopia.",
       PT: "Transformação de fotografia urbana em distopia digital."
@@ -62,7 +123,7 @@ export const PROJECTS: Project[] = [
     category: '3D Modeling',
     year: '2024',
     type: 'image',
-    mediaUrl: 'https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=2574&auto=format&fit=crop', // Robot/3D
+    mediaUrl: 'https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=2574&auto=format&fit=crop',
     description: {
       EN: "Hard surface modeling character design for game assets.",
       PT: "Modelagem hard surface de personagem para assets de jogos."
@@ -90,46 +151,3 @@ export const PROJECTS: Project[] = [
     }
   }
 ];
-
-// Radar Chart Data (Conceptual Skills)
-export const SKILL_CATEGORIES: SkillData[] = [
-  { name: 'Color Grading', level: 95, category: 'Visual' },
-  { name: 'Compositing', level: 90, category: 'Visual' },
-  { name: '3D Logic', level: 75, category: '3D' },
-  { name: 'Sound Design', level: 70, category: 'Audio' },
-  { name: 'Motion', level: 85, category: 'Animation' },
-  { name: 'Storytelling', level: 80, category: 'Creative' },
-];
-
-// Bar Chart Data (Software Proficiency)
-export const SOFTWARE_STACK: SkillData[] = [
-  { name: 'DaVinci Resolve', level: 98, category: 'Software' },
-  { name: 'Adobe After Effects', level: 90, category: 'Software' },
-  { name: 'Photoshop', level: 95, category: 'Software' },
-  { name: 'Premiere Pro', level: 85, category: 'Software' },
-  { name: 'Blender', level: 75, category: 'Software' },
-  { name: 'Unreal Engine', level: 60, category: 'Software' },
-];
-
-export const ABOUT_TEXT = {
-  EN: {
-    heading: "THE OPERATOR",
-    name: "RAFAEL ALVES DA COSTA",
-    role: "DIGITAL GAMES STUDENT // VFX ARTIST",
-    bio: "I am a 19-year-old digital artisan based in Curitiba. My focus is on the convergence of raw footage and synthetic reality. I specialize in post-production, visual design, and 3D integration.",
-    stats: {
-        pcd: "PCD (Partial Hearing / Hearing Aid User)",
-        setup: "High-Performance Render Station"
-    }
-  },
-  PT: {
-    heading: "O OPERADOR",
-    name: "RAFAEL ALVES DA COSTA",
-    role: "ESTUDANTE DE JOGOS DIGITAIS // ARTISTA VFX",
-    bio: "Tenho 19 anos, sou um artesão digital baseado em Curitiba. Meu foco é na convergência entre filmagem bruta e realidade sintética. Especialista em pós-produção, design visual e integração 3D.",
-    stats: {
-        pcd: "PCD (Audição Parcial / Usuário de Aparelho)",
-        setup: "Estação de Render de Alta Performance"
-    }
-  }
-};
