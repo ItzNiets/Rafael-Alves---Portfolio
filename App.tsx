@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Showcase from './components/Showcase';
 import Cursor from './components/Cursor';
-import NeuralLink from './components/NeuralLink'; // Imported Neural Link
 import { Language } from './types';
 import { CONTACT_INFO } from './constants';
 import { Clock, MapPin, Mail, Phone, ArrowUpRight } from 'lucide-react';
@@ -44,9 +43,6 @@ const App: React.FC = () => {
         <About lang={lang} />
         <Showcase lang={lang} />
       </main>
-
-      {/* AI Assistant Floating Button */}
-      <NeuralLink />
 
       {/* Enhanced Footer - Minimalist & Compact */}
       <footer id="footer" className="py-12 border-t border-[#111] bg-[#020202] relative overflow-hidden">

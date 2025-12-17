@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, X, Send, Cpu } from 'lucide-react';
-import { sendMessageToGemini } from '../services/geminiService';
+import { GoogleGenAI } from "@google/genai";
 import { ChatMessage } from '../types';
 
 const NeuralLink: React.FC = () => {
@@ -27,11 +27,35 @@ const NeuralLink: React.FC = () => {
     setInput('');
     setIsLoading(true);
 
-    const responseText = await sendMessageToGemini(messages, input);
-    
-    const botMsg: ChatMessage = { role: 'model', text: responseText, timestamp: Date.now() };
-    setMessages(prev => [...prev, botMsg]);
-    setIsLoading(false);
+    try {
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      
+      // Construct history including the new message
+      // Note: 'messages' here is the state before the update above, so we append userMsg manually for the API call
+      const history = [...messages, userMsg].map(msg => ({
+        role: msg.role,
+        parts: [{ text: msg.text }]
+      }));
+
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: history,
+        config: {
+          systemInstruction: "You are a helpful AI assistant for a portfolio website. Your name is 'Neural Link'. Keep responses concise, technical, and fitting the cyberpunk theme.",
+        }
+      });
+
+      const responseText = response.text || "NO DATA RECEIVED";
+      
+      const botMsg: ChatMessage = { role: 'model', text: responseText, timestamp: Date.now() };
+      setMessages(prev => [...prev, botMsg]);
+    } catch (error) {
+      console.error("Neural Link Error:", error);
+      const errorMsg: ChatMessage = { role: 'model', text: "CONNECTION INTERRUPTED. RETRY.", timestamp: Date.now() };
+      setMessages(prev => [...prev, errorMsg]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
